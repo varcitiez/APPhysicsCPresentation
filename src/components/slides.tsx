@@ -343,7 +343,7 @@ const SC = () => {
         </button>
       ) : (
         <Card className="max-w-4xl animate-fade-up flex items-center gap-5">
-          <img src="/public/images/galileo.jpg" alt="Galileo" className="w-20 rounded-l" />
+          <img src="/images/galileo.jpg" alt="Galileo" className="w-20 rounded-l" />
           <div>
             <div className="font-display text-2xl text-[var(--yellow)]">Galileo, ~400 years ago</div>
           </div>
@@ -416,7 +416,7 @@ const S10 = () => (
       would your speed change how long until you hit the water?
     </h2>
     <p className="text-xl text-white/70">Discuss with a neighbor for 30 seconds.</p>
-    <img src="/public/images/cliffwalking.jpg" alt="cliffwalking" className="w-60 rounded-xl"></img>
+    <img src="/images/cliffwalking.jpg" alt="cliffwalking" className="w-60 rounded-xl"></img>
   </div>
 );
 
@@ -425,7 +425,7 @@ const S11 = () => (
     <h2 className="font-display text-5xl text-[var(--yellow)]">Meet the Equipment</h2>
     <div className="grid grid-cols-2 gap-10 max-w-5xl">
       <Card className="flex flex-col items-center gap-4">
-        <img src="/public/images/springlauncher.png" className="w-75"></img>
+        <img src="/images/springlauncher.png" className="w-75"></img>
         <h3 className="font-display text-3xl text-[var(--pink)]">Spring Launcher</h3>
         <p className="text-center text-lg text-white/80">Fires a ball straight sideways at the same height as the drop.</p>
       </Card>
