@@ -30,7 +30,7 @@ const Card: React.FC<{ children: React.ReactNode; className?: string }> = ({ chi
 const VoteButtons: React.FC<{ ctx: SlideCtx }> = ({ ctx }) => {
   const total = ctx.votes.launched + ctx.votes.dropped + ctx.votes.tie;
   const opts: { k: VoteKey; label: string; color: string }[] = [
-    { k: "launched", label: "The launched ball 🚀", color: "bg-[var(--pink)]" },
+    { k: "launched", label: "The launched ball ⚾", color: "bg-[var(--pink)]" },
     { k: "dropped", label: "The dropped ball ⬇️", color: "bg-[var(--teal)]" },
     { k: "tie", label: "They tie 🤝", color: "bg-[var(--yellow)] text-[var(--navy)]" },
   ];
@@ -59,12 +59,31 @@ const VoteButtons: React.FC<{ ctx: SlideCtx }> = ({ ctx }) => {
 
 // ---- Slide components ----
 
+const S0 = () => (
+  <div className="flex flex-col items-center justify-center h-full gap-10 px-12 text-center">
+    <div className="bg-[var(--yellow)] text-[var(--navy)] px-6 py-2 rounded-full font-display text-2xl shadow-xl animate-fade-up">
+      WITH A LIVE PHYSICS DEMO!!
+    </div>
+
+    <Title sub="A physics presentation for SLIS">
+      Projectile Motion Exploration
+    </Title>
+
+    <div className="flex gap-12 text-7xl">
+    </div>
+
+    <p className="text-2xl text-white/70">
+      By Gabriel Magwood, Vedu Srinivasan, and Daniel Kim
+    </p>
+  </div>
+);
+
 const S1 = () => (
   <div className="flex flex-col items-center justify-center h-full gap-12 px-12">
     <Title>Which Ball Hits First?</Title>
     <div className="flex items-center gap-16 mt-8">
       <div className="flex flex-col items-center gap-5">
-        <div className="text-5xl">🚀</div>
+        <div className="text-5xl">⚾</div>
         <div className="w-20 h-20 rounded-full bg-[var(--pink)] animate-float shadow-[0_0_40px_rgba(255,93,143,0.6)]" />
         <div className="text-white/70">Launched →</div>
       </div>
@@ -75,7 +94,6 @@ const S1 = () => (
         <div className="text-white/70">Dropped ↓</div>
       </div>
     </div>
-    <div className="text-2xl flex flex-col text-white/70 translate-y-40">A physics presentation by Gabriel Magwood, Vedu Srinivasan, and Daniel Kim</div>
   </div>
 );
 
@@ -142,7 +160,7 @@ const S5 = () => (
 // NEW Slide A — What Makes Something a Projectile?
 const SA = () => {
   const items = [
-    { e: "🚀", title: "Rocket", isP: false, why: "Has an engine pushing it the whole way" },
+    { e: "⚾", title: "Rocket", isP: false, why: "Has an engine pushing it the whole way" },
     { e: "⚽", title: "Soccer ball mid-air", isP: true, why: "Nothing pushing it after the kick" },
     { e: "🛩️", title: "Airplane", isP: false, why: "Engines running, wings lifting" },
     { e: "🏹", title: "Arrow after release", isP: true, why: "No more force after the bow" },
@@ -199,7 +217,7 @@ const SB = () => {
               <text x="160" y="40" fill="#ffd60a" fontSize="22">⭐ 45°</text>
             </svg>
             <h3 className="font-display text-2xl text-[var(--yellow)]">Launch Angle</h3>
-            <p className="text-lg text-white/85">45° goes the farthest.</p>
+            <p className="text-lg text-white/85">Around 45° goes the farthest.</p>
           </Card>
         )}
         {shown > 2 && (
@@ -217,39 +235,43 @@ const SB = () => {
   );
 };
 
-const S6 = () => {
-  const items = [
-    { e: "⚽", l: "Soccer kick" }, { e: "🏀", l: "Basketball shot" },
-    { e: "🎈", l: "Water balloon" },
-  ];
-  return (
-    <div className="flex flex-col items-center justify-center h-full gap-10 px-12">
-      <h2 className="font-display text-5xl text-[var(--yellow)]">Projectiles are EVERYWHERE</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 justify-items-center">
-        {items.map((it, i) => (
-          <Card key={i} className="flex flex-col items-center gap-4 animate-fade-up" >
-            <div className="text-7xl animate-float" style={{ animationDelay: `${i * 0.2}s` }}>{it.e}</div>
-            <div className="text-xl font-bold">{it.l}</div>
-          </Card>
-        ))}
-      </div>
-    </div>
-  );
-};
+// const S6 = () => {
+//   const items = [
+//     { e: "⚽", l: "Soccer kick" }, { e: "🏀", l: "Basketball shot" },
+//     { e: "🎈", l: "Water balloon" },
+//   ];
+//   return (
+//     <div className="flex flex-col items-center justify-center h-full gap-10 px-12">
+//       <h2 className="font-display text-5xl text-[var(--yellow)]">Projectiles are EVERYWHERE</h2>
+//       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 justify-items-center">
+//         {items.map((it, i) => (
+//           <Card key={i} className="flex flex-col items-center gap-4 animate-fade-up" >
+//             <div className="text-7xl animate-float" style={{ animationDelay: `${i * 0.2}s` }}>{it.e}</div>
+//             <div className="text-xl font-bold">{it.l}</div>
+//           </Card>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
 
 const S7 = () => (
   <div className="flex flex-col items-center justify-center h-full gap-10 px-12 text-center">
     <h2 className="font-display text-5xl md:text-6xl text-[var(--yellow)] leading-tight">
-      Horizontal and Vertical motion are <span className="underline decoration-[var(--pink)]">INDEPENDENT</span>.
+      Sideways motion and falling motion happen separately.
     </h2>
+
     <Card className="max-w-4xl">
-      <div className="flex items-center gap-6">
-        <div className="text-8xl animate-float">🚶‍♂️</div>
-        <p className="text-2xl text-left">
-          It's like <span className="text-[var(--yellow)] font-bold">walking forward</span> and{" "}
-          <span className="text-[var(--pink)] font-bold">chewing gum</span>. Your legs don't know what your mouth is doing.
-        </p>
-      </div>
+      <p className="text-3xl leading-relaxed">
+        The launched ball moves <span className="text-[var(--pink)] font-bold">sideways</span>
+        {" "}and falls <span className="text-[var(--teal)] font-bold">down</span> at the same time.
+      </p>
+      <p className="mt-6 text-3xl leading-relaxed">
+        The dropped ball only falls <span className="text-[var(--teal)] font-bold">down</span>.
+      </p>
+      <p className="mt-8 font-display text-4xl text-[var(--yellow)]">
+        Same downward motion = same landing time.
+      </p>
     </Card>
   </div>
 );
@@ -316,9 +338,13 @@ const SC = () => {
       <h2 className="font-display text-5xl text-[var(--yellow)] text-center">A Brief History: Cannonballs & Confusion</h2>
       <Card className="max-w-5xl">
         <p className="text-xl leading-relaxed">
-          For thousands of years, people had <span className="text-[var(--pink)] font-bold">no idea</span> how projectiles
-          worked. They thought a cannonball flew straight forward, then just… <em>dropped</em> when it ran out of "forward." 🤷
-        </p>
+  For a long time, people did not fully understand projectile motion.
+  One old idea was that a cannonball mostly moved forward, then gravity pulled it downward.
+  Galileo helped show that projectiles have two motions at once:
+  <span className="text-[var(--yellow)] font-bold"> sideways motion</span>
+  {" "}and
+  <span className="text-[var(--teal)] font-bold"> downward falling motion</span>.
+</p>
       </Card>
       <div className="flex gap-8 items-center">
         <div className="flex flex-col items-center">
@@ -438,13 +464,13 @@ const S11 = () => (
   </div>
 );
 
-const S12: React.FC<{ ctx: SlideCtx }> = ({ ctx }) => (
-  <div className="flex flex-col items-center justify-center h-full gap-8 px-12">
-    <h2 className="font-display text-5xl text-[var(--yellow)] animate-pulse">Lock In Your Final Prediction!</h2>
-    <p className="text-xl text-white/70">Last chance to change your vote…</p>
-    <VoteButtons ctx={ctx} />
-  </div>
-);
+// const S12: React.FC<{ ctx: SlideCtx }> = ({ ctx }) => (
+//   <div className="flex flex-col items-center justify-center h-full gap-8 px-12">
+//     <h2 className="font-display text-5xl text-[var(--yellow)] animate-pulse">Lock In Your Final Prediction!</h2>
+//     <p className="text-xl text-white/70">Last chance to change your vote…</p>
+//     <VoteButtons ctx={ctx} />
+//   </div>
+// );
 
 const S13 = () => {
   const [count, setCount] = useState<number | null>(null);
@@ -500,7 +526,7 @@ const S14: React.FC<{ ctx: SlideCtx }> = ({ ctx }) => {
       <Card className="max-w-3xl">
         <h3 className="text-2xl text-[var(--yellow)] mb-3 font-display">Your votes:</h3>
         <div className="space-y-2 text-xl">
-          <div>🚀 Launched: <b>{ctx.votes.launched}</b></div>
+          <div>⚾ Launched: <b>{ctx.votes.launched}</b></div>
           <div>⬇️ Dropped: <b>{ctx.votes.dropped}</b></div>
           <div>🤝 Tie (correct!): <b className="text-[var(--yellow)]">{ctx.votes.tie}</b></div>
         </div>
@@ -528,8 +554,8 @@ const S15 = () => {
           const y = 40 + i * i * 14;
           return (
             <g key={i}>
-              <circle cx={x} cy={y} r="14" fill="#4cc9f0" />
-              <circle cx={x + 30} cy={y} r="14" fill="#ff5d8f" />
+              <circle cx={60} cy={y} r="12" fill="#4cc9f0" />
+              <circle cx={x + 30} cy={y} r="12" fill="#ff5d8f" />
               <line x1="60" y1={y} x2={x + 50} y2={y} stroke="#ffd60a" strokeDasharray="4 4" />
             </g>
           );
@@ -653,44 +679,44 @@ const SJ = () => (
   </div>
 );
 
-// EXPANDED S18 — Video Games with bad vs good physics
-const S18 = () => (
-  <div className="flex flex-col items-center justify-center h-full gap-6 px-12">
-    <h2 className="font-display text-5xl text-[var(--yellow)]">This is how video games work! 🎮</h2>
-    <div className="bg-[var(--navy-2)] p-4 rounded-2xl border-4 border-[var(--yellow)]/30">
-      <svg viewBox="0 0 600 200" className="w-[560px] h-[180px]">
-        {Array.from({length: 12}).map((_, i) => {
-          const x = 30 + i * 45;
-          const y = 160 - (i * 24 - i * i * 2);
-          return <rect key={i} x={x} y={y} width="18" height="18" fill="#ffd60a" />;
-        })}
-        <line x1="0" y1="180" x2="600" y2="180" stroke="#4cc9f0" strokeWidth="4" />
-      </svg>
-    </div>
-    <div className="grid grid-cols-2 gap-6 max-w-5xl w-full">
-      <Card className="border-4 border-[var(--pink)]/60">
-        <div className="text-[var(--pink)] font-display text-xl mb-2">❌ Bad game physics</div>
-        <svg viewBox="0 0 220 120" className="w-full h-24">
-          <line x1="20" y1="40" x2="140" y2="40" stroke="#ff5d8f" strokeWidth="4" />
-          <line x1="140" y1="40" x2="140" y2="110" stroke="#ff5d8f" strokeWidth="4" />
-          <circle cx="140" cy="110" r="6" fill="#ff5d8f" />
-        </svg>
-        <p className="text-sm text-white/70 mt-2">Walk off ledge → drop straight down. Looks fake.</p>
-      </Card>
-      <Card className="border-4 border-[var(--teal)]/60">
-        <div className="text-[var(--teal)] font-display text-xl mb-2">✅ Good game physics</div>
-        <svg viewBox="0 0 220 120" className="w-full h-24">
-          <path d="M 20 40 Q 100 40 200 110" fill="none" stroke="#4cc9f0" strokeWidth="4" />
-          <circle cx="200" cy="110" r="6" fill="#4cc9f0" />
-        </svg>
-        <p className="text-sm text-white/70 mt-2">True arc — keeps your forward speed as you fall.</p>
-      </Card>
-    </div>
-    <p className="text-lg text-center max-w-4xl text-white/85">
-      The better the physics engine, the more realistic the throw, jump, or shot feels.
-    </p>
-  </div>
-);
+// // EXPANDED S18 — Video Games with bad vs good physics
+// const S18 = () => (
+//   <div className="flex flex-col items-center justify-center h-full gap-6 px-12">
+//     <h2 className="font-display text-5xl text-[var(--yellow)]">This is how video games work! 🎮</h2>
+//     <div className="bg-[var(--navy-2)] p-4 rounded-2xl border-4 border-[var(--yellow)]/30">
+//       <svg viewBox="0 0 600 200" className="w-[560px] h-[180px]">
+//         {Array.from({length: 12}).map((_, i) => {
+//           const x = 30 + i * 45;
+//           const y = 160 - (i * 24 - i * i * 2);
+//           return <rect key={i} x={x} y={y} width="18" height="18" fill="#ffd60a" />;
+//         })}
+//         <line x1="0" y1="180" x2="600" y2="180" stroke="#4cc9f0" strokeWidth="4" />
+//       </svg>
+//     </div>
+//     <div className="grid grid-cols-2 gap-6 max-w-5xl w-full">
+//       <Card className="border-4 border-[var(--pink)]/60">
+//         <div className="text-[var(--pink)] font-display text-xl mb-2">❌ Bad game physics</div>
+//         <svg viewBox="0 0 220 120" className="w-full h-24">
+//           <line x1="20" y1="40" x2="140" y2="40" stroke="#ff5d8f" strokeWidth="4" />
+//           <line x1="140" y1="40" x2="140" y2="110" stroke="#ff5d8f" strokeWidth="4" />
+//           <circle cx="140" cy="110" r="6" fill="#ff5d8f" />
+//         </svg>
+//         <p className="text-sm text-white/70 mt-2">Walk off ledge → drop straight down. Looks fake.</p>
+//       </Card>
+//       <Card className="border-4 border-[var(--teal)]/60">
+//         <div className="text-[var(--teal)] font-display text-xl mb-2">✅ Good game physics</div>
+//         <svg viewBox="0 0 220 120" className="w-full h-24">
+//           <path d="M 20 40 Q 100 40 200 110" fill="none" stroke="#4cc9f0" strokeWidth="4" />
+//           <circle cx="200" cy="110" r="6" fill="#4cc9f0" />
+//         </svg>
+//         <p className="text-sm text-white/70 mt-2">True arc — keeps your forward speed as you fall.</p>
+//       </Card>
+//     </div>
+//     <p className="text-lg text-center max-w-4xl text-white/85">
+//       The better the physics engine, the more realistic the throw, jump, or shot feels.
+//     </p>
+//   </div>
+// );
 
 // NEW Slide E — Angry Birds
 const SE = () => (
@@ -818,22 +844,22 @@ const S20 = () => (
   </div>
 );
 
-const S21 = () => (
-  <div className="flex flex-col items-center justify-center h-full gap-10 px-12">
-    <h2 className="font-display text-5xl text-[var(--yellow)]">Sports = Physics in Action</h2>
-    <div className="grid grid-cols-3 gap-8">
-      {[{e:"🏈",l:"Quarterbacks"},{e:"🏃",l:"Long jumpers"},{e:"⚾",l:"Outfielders"}].map((s,i) => (
-        <Card key={i} className="flex flex-col items-center gap-3 animate-fade-up">
-          <div className="text-7xl">{s.e}</div>
-          <div className="text-xl font-bold">{s.l}</div>
-        </Card>
-      ))}
-    </div>
-    <p className="text-2xl text-center max-w-3xl text-white/90">
-      Athletes are doing projectile physics in their heads <span className="text-[var(--yellow)] font-bold">every play</span>.
-    </p>
-  </div>
-);
+// const S21 = () => (
+//   <div className="flex flex-col items-center justify-center h-full gap-10 px-12">
+//     <h2 className="font-display text-5xl text-[var(--yellow)]">Sports = Physics in Action</h2>
+//     <div className="grid grid-cols-3 gap-8">
+//       {[{e:"🏈",l:"Quarterbacks"},{e:"🏃",l:"Long jumpers"},{e:"⚾",l:"Outfielders"}].map((s,i) => (
+//         <Card key={i} className="flex flex-col items-center gap-3 animate-fade-up">
+//           <div className="text-7xl">{s.e}</div>
+//           <div className="text-xl font-bold">{s.l}</div>
+//         </Card>
+//       ))}
+//     </div>
+//     <p className="text-2xl text-center max-w-3xl text-white/90">
+//       Athletes are doing projectile physics in their heads <span className="text-[var(--yellow)] font-bold">every play</span>.
+//     </p>
+//   </div>
+// );
 
 const QuizSlide: React.FC<{ ctx: SlideCtx; slideNum: number; q: string; choices: string[]; correct: number; explain: string }> =
   ({ ctx, slideNum, q, choices, correct, explain }) => {
@@ -880,7 +906,7 @@ const S23 = () => {
   const items = [
     { e: "🎯", t: "A projectile is anything moving through the air with no engine — only gravity acting on it." },
     { e: "↔️↕️", t: "Horizontal and vertical motion are completely independent of each other." },
-    { e: "⏱️", t: "Gravity pulls ALL objects down at the same rate, no matter their horizontal speed." },
+    { e: "⏱️", t: "Ignoring air resistance, gravity makes objects speed up downward the same way." },
     { e: "📐", t: "45 degrees is the launch angle that sends a projectile the farthest." },
     { e: "🌍", t: "Orbiting spacecraft are projectiles in permanent free fall — just missing Earth continuously." },
   ];
@@ -907,15 +933,8 @@ const S23 = () => {
 const S24: React.FC<{ ctx: SlideCtx }> = ({ ctx }) => (
   <div className="flex flex-col items-center justify-center h-full gap-8 px-12 text-center">
     <h1 className="font-display text-6xl md:text-7xl font-bold text-[var(--yellow)] leading-tight max-w-5xl">
-      You just learned physics that NASA uses. 🚀
+      You just learned physics that NASA uses. ⚾
     </h1>
-    <Card className="max-w-4xl">
-      <p className="text-2xl">
-        <span className="text-[var(--pink)] font-bold">Brain blower:</span> Astronauts in orbit are in constant{" "}
-        <span className="text-[var(--yellow)] font-bold">free fall</span> — they're just moving forward so fast they keep <em>missing</em> Earth!
-      </p>
-    </Card>
-    <div className="text-8xl animate-float">🚀</div>
     <h2 className="font-display text-5xl text-white">Questions?</h2>
     <button
       onClick={() => { ctx.goTo(0); window.location.reload(); }}
@@ -935,52 +954,314 @@ export interface SlideDef {
 }
 
 export const SLIDES: SlideDef[] = [
-  { title: "Title", notes: ["Welcome the class warmly.", "Introduce the mystery: which ball hits first?", "Don't reveal the answer yet."], render: () => <S1 /> },
-  { title: "Predict", notes: ["Have every student vote.", "Encourage commitment to a guess.", "No judgement on wrong answers."], render: (c) => <S2 ctx={c} /> },
-  { title: "Suspense", notes: ["Build anticipation.", "Tell them you'll explain physics first."], render: () => <S3 /> },
-  { title: "Definition", notes: ["Define projectile in kid-friendly words.", "Ask for examples from their lives."], render: () => <S4 /> },
-  { title: "Trajectory", notes: ["Introduce the word 'trajectory'.", "Have students trace the arc in the air with their fingers."], render: () => <S5 /> },
-  { title: "What is a projectile?", notes: ["A projectile is only in the air with no engine, no wings, nothing helping it.", "The only thing acting on it once it's launched is gravity. That's the key.", "Ask kids to call out which everyday objects are or aren't projectiles."], render: () => <SA /> },
-  { title: "What affects the path?", notes: ["Speed, angle, and height are the three big factors.", "Scientists figured out centuries ago that 45° is the magic angle for max distance.", "Cannonball operators used this!"], render: () => <SB /> },
-  { title: "Examples", notes: ["Quick tour of everyday projectiles.", "Ask for student examples to add."], render: () => <S6 /> },
-  
-  { title: "Side-by-side", notes: ["Point out matching tick marks at each time step.", "Watch the animation loop together."], render: () => <S8 /> },
-  { title: "Gravity", notes: ["Gravity arrow always points down.", "Equal pull, regardless of horizontal speed."], render: () => <S9 /> },
-  { title: "History", notes: ["For thousands of years people believed cannonballs went forward then dropped straight down.", "Galileo (~400 years ago) figured out forward motion and falling are completely separate.", "He changed everything."], render: () => <SC /> },
-  { title: "Monkey & Hunter", notes: ["This is a real classic physics thought experiment.", "Have students vote BEFORE revealing.", "Tie it back to the demo: same idea as our two balls."], render: (c) => <SD ctx={c} /> },
-  { title: "Think-Pair-Share", notes: ["Give 30 seconds to discuss.", "Call on 2-3 pairs to share their reasoning."], render: () => <S10 /> },
-  { title: "Equipment", notes: ["Show actual launcher and ball.", "Explain identical balls and same height."], render: () => <S11 /> },
-  { title: "Final Vote", notes: ["Last chance to change vote.", "Build dramatic tension."], render: (c) => <S12 ctx={c} /> },
-  { title: "DEMO", notes: ["Use the countdown button.", "Perform the live demo on GO!"], render: () => <S13 /> },
-  { title: "Reveal", notes: ["Celebrate the result!", "Acknowledge the kids who voted TIE."], render: (c) => <S14 ctx={c} /> },
-  { title: "Time vs Height", notes: ["Click through each time step.", "Both balls drop the same vertical distance."], render: () => <S15 /> },
-  { title: "Key Insight", notes: ["Read the insight slowly.", "Repeat: sideways speed ≠ extra gravity."], render: () => <S16 /> },
-  { title: "Summary", notes: ["Three bullets summarize the science.", "Cards animate in one at a time."], render: () => <S17 /> },
-  { title: "Misconceptions", notes: ["Tap each card to reveal the truth.", "Bust the heavier-falls-faster myth carefully — it's the most common one."], render: () => <SI /> },
-  { title: "Air Resistance", notes: ["Acknowledge the simplification.", "Science always works by simplifying first, then adding complexity back in.", "Use the crumpled-vs-flat paper example."], render: () => <SJ /> },
-  
-  { title: "Angry Birds", notes: ["Every shot is projectile motion.", "Players are picking launch angle and speed.", "They've been doing physics the whole time."], render: () => <SE /> },
-  { title: "Outfielders", notes: ["Athletes train their brains to predict trajectories automatically.", "Physics class teaches the same skill the brain already does."], render: () => <SF /> },
-  { title: "Nature", notes: ["Animals that misjudged jumps didn't survive.", "Nature is a physics teacher.", "Highlight the archerfish — incredibly cool example."], render: () => <SG /> },
-  
-  { title: "Pilots", notes: ["Explain why pilots aim ahead.", "Forward velocity is preserved."], render: () => <S20 /> },
-  { title: "Sports", notes: ["Athletes do mental projectile math.", "Ask kids about their sports."], render: () => <S21 /> },
-  { title: "Quiz 1", notes: ["One try only.", "Discuss the answer together."], render: (c) =>
-    <QuizSlide ctx={c} slideNum={20} q="If I launch a ball faster horizontally, does it take longer to hit the ground?"
-      choices={["Yes", "No", "Depends on the ball"]} correct={1}
-      explain="Sideways speed doesn't change vertical fall time — gravity acts the same on every ball." /> },
-  { title: "Quiz 2", notes: ["One try only.", "Reinforce gravity as the answer."], render: (c) =>
-    <QuizSlide ctx={c} slideNum={21} q="What force pulls both balls to the ground at the same rate?"
-      choices={["Magnetism", "Wind", "Gravity"]} correct={2}
-      explain="Gravity pulls everything toward Earth at the same rate, regardless of sideways motion." /> },
-  { title: "Quiz 3", notes: ["Pilot supply-drop scenario.", "The package keeps the plane's forward speed."], render: (c) =>
-    <QuizSlide ctx={c} slideNum={22} q="A pilot at 1,000 ft wants to drop a package on a target. When should they release it?"
-      choices={["Directly above the target", "BEFORE reaching the target", "AFTER passing the target"]} correct={1}
-      explain="The package keeps moving forward with the plane even after release. The pilot has to account for that horizontal motion — classic projectile physics." /> },
-  { title: "Quiz 4", notes: ["This question reinforces the whole demo.", "Horizontal speed has zero effect on falling time."], render: (c) =>
-    <QuizSlide ctx={c} slideNum={23} q="Two balls launched sideways from the same height: Ball A at 10 mph, Ball B at 100 mph. Which hits first?"
-      choices={["Ball A (slower)", "Ball B (faster)", "Same time"]} correct={2}
-      explain="Horizontal speed has ZERO effect on how fast gravity pulls something down. This is the whole point of our demo — sideways speed is irrelevant to falling time." /> },
-  { title: "Recap", notes: ["Five big ideas in one slide.", "Have students repeat them aloud."], render: () => <S23 /> },
-  { title: "Closing", notes: ["End with the orbit fun fact.", "Open the floor for questions.", "Restart button is on this slide."], render: (c) => <S24 ctx={c} /> },
+  // 1) Hook: ask the question, collect predictions, then do the live demo right away.
+  {
+    title: "Opening",
+    notes: [
+      "Welcome the students.",
+      "Explain that this will be an interactive live physics demo.",
+      "Tell them they will make a prediction before seeing the answer.",
+    ],
+    render: () => <S0 />,
+  },
+  {
+    title: "Question",
+    notes: [
+      "Introduce the main mystery: which ball hits first?",
+      "Do not explain the answer yet.",
+      "Keep this quick so the demo happens early.",
+    ],
+    render: () => <S1 />,
+  },
+  {
+    title: "Prediction",
+    notes: [
+      "Have every student vote.",
+      "Encourage them to commit to a guess before the demo.",
+      "No judgement on wrong answers.",
+    ],
+    render: (c) => <S2 ctx={c} />,
+  },
+  {
+    title: "Equipment",
+    notes: [
+      "Show the actual launcher and ball.",
+      "Explain that the two balls start at the same height.",
+      "Point out that one is launched sideways while the other is dropped.",
+    ],
+    render: () => <S11 />,
+  },
+  // {
+  //   title: "Final Prediction",
+  //   notes: [
+  //     "Give students one last chance to change their vote after seeing the equipment.",
+  //     "Build dramatic tension before the demo.",
+  //   ],
+  //   render: (c) => <S12 ctx={c} />,
+  // },
+  {
+    title: "Live Demo",
+    notes: [
+      "Use the countdown button.",
+      "Perform the live demo on GO.",
+      "Tell students to watch closely and listen for the landing.",
+    ],
+    render: () => <S13 />,
+  },
+  {
+    title: "Result",
+    notes: [
+      "Celebrate the result.",
+      "Acknowledge students who predicted a tie.",
+      "Now transition into the explanation: why did that happen?",
+    ],
+    render: (c) => <S14 ctx={c} />,
+  },
+
+  // 2) Core explanation: explain the exact result they just saw.
+  {
+    title: "Key Insight",
+    notes: [
+      "Read the insight slowly.",
+      "Emphasize that the launcher only changes sideways motion.",
+      "Repeat: sideways speed does not create extra gravity.",
+    ],
+    render: () => <S16 />,
+  },
+  {
+    title: "Side-by-side",
+    notes: [
+      "Point out matching vertical positions at each time step.",
+      "Use this as the main visual explanation for the demo result.",
+    ],
+    render: () => <S8 />,
+  },
+  {
+    title: "Time vs Height",
+    notes: [
+      "Click through each time step.",
+      "Both balls drop the same vertical distance.",
+      "Connect the graph directly back to the live demo.",
+    ],
+    render: () => <S15 />,
+  },
+  {
+    title: "Gravity",
+    notes: [
+      "Gravity pulls both balls downward.",
+      "The downward pull is the same regardless of sideways speed.",
+    ],
+    render: () => <S9 />,
+  },
+  {
+    title: "Independence",
+    notes: [
+      "Introduce the big physics idea: horizontal and vertical motion are independent.",
+      "Translate it into kid-friendly language.",
+      "Connect it back to the launched ball and dropped ball.",
+    ],
+    render: () => <S7 />,
+  },
+  {
+    title: "Think-Pair-Share",
+    notes: [
+      "Give 30 seconds to discuss.",
+      "Call on 2 or 3 pairs to share their reasoning.",
+      "Use their answers to reinforce independence of motion.",
+    ],
+    render: () => <S10 />,
+  },
+
+  // 3) Deep dive: define projectile motion after students already care about the result.
+  {
+    title: "Definition",
+    notes: [
+      "Define projectile in kid-friendly words.",
+      "Ask for examples from their lives.",
+    ],
+    render: () => <S4 />,
+  },
+  {
+    title: "Trajectory",
+    notes: [
+      "Introduce the word trajectory.",
+      "Have students trace the arc in the air with their fingers.",
+    ],
+    render: () => <S5 />,
+  },
+  {
+    title: "What is a projectile?",
+    notes: [
+      "A projectile is in the air with no engine, no wings, nothing helping it.",
+      "Once launched, gravity is the main force acting on it.",
+      "Ask kids to call out which everyday objects are or are not projectiles.",
+    ],
+    render: () => <SA />,
+  },
+  {
+    title: "What affects the path?",
+    notes: [
+      "Speed, angle, and height are the three big factors.",
+      "Keep this as a quick extension, not the main point of the demo.",
+    ],
+    render: () => <SB />,
+  },
+  // {
+  //   title: "Examples",
+  //   notes: [
+  //     "Quick tour of everyday projectiles.",
+  //     "Ask students for more examples.",
+  //   ],
+  //   render: () => <S6 />,
+  // },
+
+  // 4) Clarify limits and common confusions.
+  {
+    title: "Misconceptions",
+    notes: [
+      "Tap each card to reveal the truth.",
+      "Bust the heavier-falls-faster myth carefully because it is very common.",
+    ],
+    render: () => <SI />,
+  },
+  {
+    title: "Air Resistance",
+    notes: [
+      "Acknowledge the simplification.",
+      "Explain that real life has air resistance, but the demo balls are similar enough that it barely matters.",
+      "Use the crumpled-vs-flat paper example.",
+    ],
+    render: () => <SJ />,
+  },
+  {
+    title: "History",
+    notes: [
+      "People used to misunderstand projectile motion.",
+      "Galileo helped show that forward motion and falling motion can be treated separately.",
+      "Connect history back to the demo result.",
+    ],
+    render: () => <SC />,
+  },
+  {
+    title: "Monkey & Hunter",
+    notes: [
+      "This is a classic physics thought experiment.",
+      "Have students vote before revealing.",
+      "Tie it back to the demo: the dart and monkey fall together just like the two balls.",
+    ],
+    render: (c) => <SD ctx={c} />,
+  },
+
+  // 5) Applications: now show where this idea appears in the real world.
+  {
+    title: "Angry Birds",
+    notes: [
+      "Every shot is projectile motion.",
+      "Players are picking launch angle and speed.",
+      "They have been doing physics the whole time.",
+    ],
+    render: () => <SE />,
+  },
+  // {
+  //   title: "Video Games",
+  //   notes: [
+  //     "Show bad game physics versus good game physics.",
+  //     "A realistic jump or throw keeps sideways speed while falling.",
+  //   ],
+  //   render: () => <S18 />,
+  // },
+  {
+    title: "Outfielders",
+    notes: [
+      "Athletes train their brains to predict trajectories automatically.",
+      "Physics class teaches the same skill the brain already does.",
+    ],
+    render: () => <SF />,
+  },
+  {
+    title: "Nature",
+    notes: [
+      "Animals use projectile motion instinctively.",
+      "Highlight the archerfish as a cool example.",
+    ],
+    render: () => <SG />,
+  },
+  {
+    title: "Pilots",
+    notes: [
+      "Explain why pilots aim ahead.",
+      "The package keeps its forward velocity while falling.",
+    ],
+    render: () => <S20 />,
+  },
+  // {
+  //   title: "Sports",
+  //   notes: [
+  //     "Athletes do mental projectile math.",
+  //     "Ask students about sports they play or watch.",
+  //   ],
+  //   render: () => <S21 />,
+  // },
+
+  // 6) Check understanding, then close.
+  {
+    title: "Quiz 1",
+    notes: [
+      "One try only.",
+      "This checks the central idea: sideways speed does not affect fall time.",
+    ],
+    render: (c) =>
+      <QuizSlide ctx={c} slideNum={20} q="If I launch a ball faster horizontally, does it take longer to hit the ground?"
+        choices={["Yes", "No", "Depends on the ball"]} correct={1}
+        explain="Sideways speed doesn't change vertical fall time — gravity acts the same on every ball." />,
+  },
+  {
+    title: "Quiz 2",
+    notes: [
+      "This question reinforces the live demo.",
+      "Horizontal speed has zero effect on falling time.",
+    ],
+    render: (c) =>
+      <QuizSlide ctx={c} slideNum={23} q="Two balls launched sideways from the same height: Ball A at 10 mph, Ball B at 100 mph. Which hits first?"
+        choices={["Ball A (slower)", "Ball B (faster)", "Same time"]} correct={2}
+        explain="Horizontal speed has ZERO effect on how fast gravity pulls something down. This is the whole point of our demo — sideways speed is irrelevant to falling time." />,
+  },
+  {
+    title: "Quiz 3",
+    notes: [
+      "Reinforce gravity as the force pulling both balls down.",
+    ],
+    render: (c) =>
+      <QuizSlide ctx={c} slideNum={21} q="What force pulls both balls to the ground at the same rate?"
+        choices={["Magnetism", "Wind", "Gravity"]} correct={2}
+        explain="Gravity pulls everything toward Earth at the same rate, regardless of sideways motion." />,
+  },
+  {
+    title: "Quiz 4",
+    notes: [
+      "Pilot supply-drop scenario.",
+      "The package keeps the plane's forward speed.",
+    ],
+    render: (c) =>
+      <QuizSlide ctx={c} slideNum={22} q="A pilot at 1,000 ft wants to drop a package on a target. When should they release it?"
+        choices={["Directly above the target", "BEFORE reaching the target", "AFTER passing the target"]} correct={1}
+        explain="The package keeps moving forward with the plane even after release. The pilot has to account for that horizontal motion — classic projectile physics." />,
+  },
+  {
+    title: "Recap",
+    notes: [
+      "Five big ideas in one slide.",
+      "Have students repeat the most important one aloud: sideways speed does not change falling time.",
+    ],
+    render: () => <S23 />,
+  },
+  {
+    title: "Closing",
+    notes: [
+      "End with the orbit fun fact.",
+      "Open the floor for questions.",
+      "Restart button is on this slide.",
+    ],
+    render: (c) => <S24 ctx={c} />,
+  },
 ];
